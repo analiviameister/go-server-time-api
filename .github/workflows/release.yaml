@@ -27,3 +27,4 @@ jobs:
           image_tag: ${{ steps.vars.outputs.tag }}
           gitops_file: helm/values/${{ github.event.repository.name }}.yaml
           gitops_token: ${{ secrets.GITOPS_PAT }}
+          platforms: linux/amd64,linux/arm64
