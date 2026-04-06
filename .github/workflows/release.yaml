@@ -23,7 +23,7 @@ jobs:
       - name: Build + update GitOps
         uses: analiviameister/cq-infra-gitops/.github/actions/build@main
         with:
-          image_name: ghcr.io/${{ github.repository_owner }}/go-time-api
+          image_name: ghcr.io/${{ github.repository_owner }}/${{ github.event.repository.name }}
           image_tag: ${{ steps.vars.outputs.tag }}
-          gitops_file: values/go-api.yaml
+          gitops_file: helm/values/${{ github.event.repository.name }}.yaml
           gitops_token: ${{ secrets.GITOPS_PAT }}
