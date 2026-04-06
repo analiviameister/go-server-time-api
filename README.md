@@ -53,4 +53,5 @@ go run main.go
 ## Rodando com docker
 
 ```bash
-docker build -t go-time-api .
+docker compose up --build
+```
