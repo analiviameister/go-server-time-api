@@ -21,7 +21,7 @@ jobs:
         run: echo "tag=${GITHUB_SHA::7}" >> "$GITHUB_OUTPUT"
 
       - name: Build + update GitOps
-        uses: analiviameister/cq-infra-gitops/.github/actions/build-and-update@main
+        uses: analiviameister/cq-infra-gitops/.github/actions/build
         with:
           image_name: ghcr.io/${{ github.repository_owner }}/go-time-api
           image_tag: ${{ steps.vars.outputs.tag }}
