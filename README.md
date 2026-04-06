@@ -18,7 +18,6 @@ API simples em Go que retorna o horário do servidor com cache de 1 minuto utili
 | Endpoint | Descrição |
 |--------|----------|
 | `/` | Retorna o horário do servidor |
-| `/time` | Mesmo comportamento da raiz |
 
 ---
 
