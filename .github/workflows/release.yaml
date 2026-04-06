@@ -1,0 +1,29 @@
+name: Release Go API
+
+on:
+  push:
+    branches: [ "main" ]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  packages: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Gerar tag
+        id: vars
+        run: echo "tag=${GITHUB_SHA::7}" >> "$GITHUB_OUTPUT"
+
+      - name: Build + update GitOps
+        uses: analiviameister/cq-infra-gitops/.github/actions/build-and-update@main
+        with:
+          image_name: ghcr.io/${{ github.repository_owner }}/go-time-api
+          image_tag: ${{ steps.vars.outputs.tag }}
+          gitops_file: values/go-api.yaml
+          gitops_token: ${{ secrets.GITOPS_PAT }}
